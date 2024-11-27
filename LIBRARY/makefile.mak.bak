@@ -33,7 +33,7 @@
 # Makefile for math functions for the Intel(r)
 # Decimal Floating-Point Math Library
 
-AR=link
+AR=lib
 AOPT=-nologo
 
 _USE_NATIVE_128b=TRUE
@@ -99,7 +99,7 @@ OBJ=obj
 
 AFLAG=-nologo
 
-BID_LIB=biddll.dll
+BID_LIB=libbid.lib
 
 BID_OBJS = \
 $O\bid128.$(OBJ) $O\bid128_2_str_tables.$(OBJ) $O\bid128_acos.$(OBJ) $O\bid128_acosh.$(OBJ) $O\bid128_add.$(OBJ) $O\bid128_asin.$(OBJ)\
@@ -225,12 +225,12 @@ $O\dpml_special_exp_t.$(OBJ) : $F\dpml_exp.c
 
 !IF ("$(_USE_NATIVE_128b)"=="FALSE")
 $(BID_LIB): $(BID_OBJS) $(FLOAT128_OBJS) $(FLOAT53_OBJS)
-   $(AR) $(AOPT) /DLL /OUT:$(BID_LIB) $(BID_OBJS) $(FLOAT128_OBJS) $(FLOAT53_OBJS)
+   $(AR) $(AOPT) /out:$(BID_LIB) $(BID_OBJS) $(FLOAT128_OBJS) $(FLOAT53_OBJS)
 
 !ELSE
 #Use native 128b data types
 $(BID_LIB): $(BID_OBJS)
-   $(AR) $(AOPT) /DLL /OUT:$(BID_LIB) $(BID_OBJS) 
+   $(AR) $(AOPT) /out:$(BID_LIB) $(BID_OBJS) 
 
 !ENDIF
 

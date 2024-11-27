@@ -33,6 +33,13 @@
 #define BID_EXTERN_C extern
 #endif 
 
+#ifndef BID_EXTERN_C_EXT
+#ifdef __cplusplus
+#define BID_EXTERN_C_EXT extern "C" __declspec(dllexport)
+#else
+#define BID_EXTERN_C_EXT extern __declspec(dllexport)
+#endif
+#endif
 #ifndef _BID_CONF_H
 #define _BID_CONF_H
 
